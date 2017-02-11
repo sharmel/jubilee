@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateVendorsServicesTranslationTable extends Migration
+class CreateVendorServiceTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateVendorsServicesTranslationTable extends Migration
      */
     public function up()
     {
-        Schema::create('vendors_services_translation', function (Blueprint $table) {
-            $table->integer('vendor_id')->unique();
-            $table->integer('service_id')->unique();
-         
+        Schema::create('vendor_service', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('vendor_id');
+            $table->integer('service_id');
+            $table->timestamps();
         });
     }
 
@@ -27,6 +28,6 @@ class CreateVendorsServicesTranslationTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('vendors_services_translation');
+        Schema::dropIfExists('vendor_service');
     }
 }

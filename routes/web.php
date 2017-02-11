@@ -1,6 +1,7 @@
 <?php
 
-use App\Services;
+use App\Service;
+use App\Vendor;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,6 +26,9 @@ Route::get('insert', function(){
 	DB::insert('insert into services(name,description,image_src,created) values(?,?,?,?)',['Musician','Musicians','images/musicians.jpg',date('Y-m-d H:i:s')]);
 	DB::insert('insert into services(name,description,image_src,created) values(?,?,?,?)',['DJ','Disk Jonkey','images/djs.jpg',date('Y-m-d H:i:s')]);
 	DB::insert('insert into services(name,description,image_src,created) values(?,?,?,?)',['MC','Master of Ceremony','images/mcs.jpg',date('Y-m-d H:i:s')]);
+
+	DB::insert('insert into vendors(first_name,last_name,username,created_at) values(?,?,?,?)',['new','test','new-test',date('Y-m-d H:i:s')]);
+	DB::insert('insert into vendors(first_name,last_name,username,created_at) values(?,?,?,?)',['new1','test1','new-test1',date('Y-m-d H:i:s')]);
 });
 
 Route::get('read', function(){
@@ -52,12 +56,21 @@ Route::resource('home', 'HomeController');
 
 Route::get('/orm', function(){
 
-	$services  = Services::all();
+	$services  = Service::all();
 
 	foreach ($services as $service) {
 		
 		echo $service->name;
 	}
+
+});
+// Many to many
+
+Route::get('vendor/{id}/service', function($id){
+
+	$vendor = Vendor::find($id)->services()->orderBy('id','desc')->get();
+
+	return $vendor;
 
 });
 
