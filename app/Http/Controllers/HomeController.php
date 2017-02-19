@@ -45,8 +45,7 @@ class HomeController extends Controller
      */
     public function show($id)
     {
-        return view('pages.private.home')->with('id',$id);
-        //return view('pages.private.home', compact('id','name','email'));
+        //
     }
 
     /**

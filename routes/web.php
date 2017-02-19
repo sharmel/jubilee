@@ -45,12 +45,18 @@ Route::get('read', function(){
 Route::resource('about', 'AboutController');
 
 Route::resource('contact', 'ContactController'); 
+//wrap in a group so that I can use the error
 
-Route::resource('vendors', 'VendorsController');
+Route::group(['middleware' => 'web'], function(){
+
+Route::resource('vendors', 'VendorController');
+
+});
 
 Route::resource('blog', 'BlogController');
 
 Route::resource('home', 'HomeController');
+Route::resource('service', 'ServiceController');
 
 // ELOQUENT
 

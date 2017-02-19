@@ -15,13 +15,13 @@ class CreateVendorLocationsTable extends Migration
     {
         Schema::create('vendor_locations', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('vendor_contacts_id');
+            $table->integer('contacts_id');
             $table->string('street_number');
             $table->string('street_name');
             $table->string('city');
             $table->string('post_code');
-            $table->string('longitude');
-            $table->string('latitude');
+            $table->string('longitude')->nullable();
+            $table->string('latitude')->nullable();
             $table->timestamps();
         });
     }

@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Service;
 
-class VendorsController extends Controller
+class ServiceController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +14,10 @@ class VendorsController extends Controller
      */
     public function index()
     {
-        return view('pages.public.vendors');
+        //
+        $services = Service::all(['id', 'name']);
+
+        return view('pages.private.vendors.create', compact('services', $services));
     }
 
     /**
@@ -23,7 +27,9 @@ class VendorsController extends Controller
      */
     public function create()
     {
-        //
+        /*$services = Service::all(['id', 'name','image_src']);
+
+        return $services;*/
     }
 
     /**

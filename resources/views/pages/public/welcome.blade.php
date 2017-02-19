@@ -13,7 +13,34 @@
 
   </div>
 <section class="services">
-    
+    @foreach($services as $key => $service)
+
+    @if ($key % 4 == 0)
+    <div class="row">
+
+      <div class="col-xs-6 col-md-3">
+      <a href="/service/{{$services[$key]->id}}/vendors"><img class="img-rounded img-responsive" src="{{URL::to($services[$key]->image_src)}}" alt="Generic placeholder image" width="240" height="240"></a> 
+              <h3>{{$services[$key]->description}}</h3> 
+      </div>
+    @elseif (count($services) > ($key))
+      <div class="col-xs-6 col-md-3">
+      <a href="/service/{{$services[$key]->id}}/vendors"><img class="img-rounded img-responsive" src="{{URL::to($services[$key]->image_src)}}" alt="Generic placeholder image" width="240" height="240"></a> 
+              <h3>{{$services[$key]->description}}</h3> 
+      </div>
+    @elseif (count($services) > ($key +1))
+      <div class="col-xs-6 col-md-3">
+      <a href="/service/{{$services[$key]->id}}/vendors"><img class="img-rounded img-responsive" src="{{URL::to($services[$key]->image_src)}}" alt="Generic placeholder image" width="240" height="240"></a> 
+              <h3>{{$services[$key]->description}}</h3> 
+      </div>
+    @elseif (count($services) > ($key + 2))
+      <div class="col-xs-6 col-md-3">
+      <a href="/service/{{$services[$key]->id}}/vendors"><img class="img-rounded img-responsive" src="{{URL::to($services[$key]->image_src)}}" alt="Generic placeholder image" width="240" height="240"></a> 
+              <h3>{{$services[$key]->description}}</h3> 
+      </div>
+   
+    </div>
+ @endif
+    @endforeach
 </section>
 <!-- <hr class="featurette-divider"> -->
       <section class="why">
@@ -129,16 +156,16 @@
             </div>
             </section>
 
-             <section class="about">
+          <section class="about">
             <div class="row">
-<div class="col-md-12">
-<div class="heading">
-<h2>About Jubilee</h2>
-<p>BlogCafe is a responsive, clean, and modern WordPress theme. It goes well whether your visitors are using smartphones, desktops, or laptops. It supports all major browsers like Chrome, Safari, Opera, Firefox, and many others.</p>
-</div>
-</div>
-</div>
+              <div class="col-md-12">
+              <div class="heading">
+              <h2>About Jubilee</h2>
+              <p>BlogCafe is a responsive, clean, and modern WordPress theme. It goes well whether your visitors are using smartphones, desktops, or laptops. It supports all major browsers like Chrome, Safari, Opera, Firefox, and many others.</p>
+              </div>
+              </div>
+            </div>
 
-</section>
+          </section>
 <!-- </div> -->
 @stop
